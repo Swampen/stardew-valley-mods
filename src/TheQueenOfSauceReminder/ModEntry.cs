@@ -11,7 +11,7 @@ namespace TheQueenOfSauceReminder
          ** Properties
          *********/
         /// <summary>The mod configuration from the player.</summary>
-        private ModConfig _config = null!;
+        private ModConfig? _config;
 
         /*********
          ** Public methods
@@ -32,6 +32,7 @@ namespace TheQueenOfSauceReminder
         /// <param name="e">The event data.</param>
         private void DayStarted(object? sender, DayStartedEventArgs e)
         {
+            _config ??= new ModConfig();
             var today = SDate.Now().DayOfWeek;
             if ((today == DayOfWeek.Wednesday && _config.EnableWednesdayReminder)
                 || (today == DayOfWeek.Sunday && _config.EnableSundayReminder))
