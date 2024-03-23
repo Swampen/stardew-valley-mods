@@ -10,6 +10,10 @@
   <PropertyGroup>
     <GamePath>E:\SteamLibrary\steamapps\common\Stardew Valley\</GamePath>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Content Include="config.json" CopyToOutputDirectory="Always"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
