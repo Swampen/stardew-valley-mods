@@ -8,29 +8,36 @@ namespace TheQueenOfSauceReminder
     public class ModEntry : Mod
     {
         /*********
-        ** Public methods
-        *********/
+         ** Properties
+         *********/
+        /// <summary>The mod configuration from the player.</summary>
+        private ModConfig _config = null!;
+
+        /*********
+         ** Public methods
+         *********/
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
-            helper.Events.GameLoop.DayStarted += this.DayStarted;
+            _config = Helper.ReadConfig<ModConfig>();
+            helper.Events.GameLoop.DayStarted += DayStarted;
         }
 
         /*********
-        ** Private methods
-        *********/
+         ** Private methods
+         *********/
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
-        private void DayStarted(object sender, DayStartedEventArgs e)
+        private void DayStarted(object? sender, DayStartedEventArgs e)
         {
-            SDate sdate1 = SDate.Now();
-            SDate sdate2 = new SDate(3, "spring");
-            SDate sdate3 = new SDate(7, "spring");
-            if (sdate1.DayOfWeek != sdate2.DayOfWeek && sdate1.DayOfWeek != sdate3.DayOfWeek)
-                return;
-            Game1.drawObjectDialogue("Reminder: The Queen of Sauce is airing on TV today");
+            var today = SDate.Now().DayOfWeek;
+            if ((today == DayOfWeek.Wednesday && _config.EnableWednesdayReminder)
+                || (today == DayOfWeek.Sunday && _config.EnableSundayReminder))
+            {
+                Game1.drawObjectDialogue("Reminder: The Queen of Sauce is airing on TV today");
+            }
         }
     }
 }
