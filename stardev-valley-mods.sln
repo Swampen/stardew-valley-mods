@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheQueenOfSauceReminder", "TheQueenOfSauceReminder\TheQueenOfSauceReminder.csproj", "{39D918C8-7157-406A-8F20-7575AE2615A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheQueenOfSauceReminder", "src\TheQueenOfSauceReminder\TheQueenOfSauceReminder.csproj", "{39D918C8-7157-406A-8F20-7575AE2615A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
