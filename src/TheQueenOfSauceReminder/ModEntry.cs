@@ -30,7 +30,7 @@ namespace TheQueenOfSauceReminder
             {
                 return;
             }
-            
+
             if (_config.RemindOnlyUnknownRecipes)
             {
                 var recipe = GetTodaysRecipe();
@@ -41,8 +41,6 @@ namespace TheQueenOfSauceReminder
             }
 
             Game1.drawObjectDialogue("Reminder: The Queen of Sauce is airing on TV today");
-
-
         }
 
         /// <summary>
