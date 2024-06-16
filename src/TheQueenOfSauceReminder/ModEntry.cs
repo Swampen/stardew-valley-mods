@@ -25,6 +25,11 @@ namespace TheQueenOfSauceReminder
         {
             _config ??= new ModConfig();
             var today = SDate.Now().DayOfWeek;
+            if (Game1.stats.DaysPlayed == 3)
+            {
+                return;
+            }
+
             if ((today != DayOfWeek.Wednesday || !_config.EnableWednesdayReminder)
                 && (today != DayOfWeek.Sunday || !_config.EnableSundayReminder))
             {
