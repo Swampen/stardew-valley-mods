@@ -25,6 +25,6 @@ public class ModEntry : Mod
             return;
         }
 
-        Game1.showGlobalMessage("Reminder:\nThe traveling cart has arrived");
+        Game1.showGlobalMessage("The traveling cart has arrived");
     }
 }
