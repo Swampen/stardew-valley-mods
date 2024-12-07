@@ -11,10 +11,14 @@ This repository contain the Stardew Valley mods I have made.
 Reminds you in the morning when the Queen of Sauce program is airing on TV.
 I made this mod because I always forgot to watch it.
 
+## [TravelingCartReminder](https://www.nexusmods.com/stardewvalley/mods/25209)
+
+Will simply just notify you that the traveling cart has arrived
+
 ## Compiling
 To compile a SMAPI mod for testing, use the following instructions:
 
 1. Make sure to have the appropriate versions of the game and [SMAPI](https://smapi.io) installed.
-2. Open the solution with Visual Studio or MonoDevelop.
+2. Open the solution with Visual Studio or Rider.
 3. Add the package [Stardew.ModBuildConfig](https://www.nuget.org/packages/Pathoschild.Stardew.ModBuildConfig) by Pathoschild to enable cross-platform compatibility.
 4. Re-build the solution and run the debugger to launch the project with SMAPI.
