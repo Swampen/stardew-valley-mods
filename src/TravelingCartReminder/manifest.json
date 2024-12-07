@@ -1,7 +1,7 @@
 {
   "Name": "TravelingCartReminder",
   "Author": "TheShwamp",
-  "Version": "1.0.1",
+  "Version": "1.0.2",
   "Description": "This mod will remind you to go see the traveling cart.",
   "UniqueID": "TheShwamp.TravelingCartReminder",
   "EntryDll": "TravelingCartReminder.dll",

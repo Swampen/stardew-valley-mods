@@ -24,7 +24,6 @@ public class ModEntry : Mod
         {
             return;
         }
-
-        Game1.showGlobalMessage("The traveling cart has arrived");
+        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage("The traveling cart has arrived"));
     }
 }
