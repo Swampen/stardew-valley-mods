@@ -1,4 +1,7 @@
 # Release notes
+## 1.1.1
+Released 20 June 2025 for SMAPI 4.0.0 or later
+* Add i18n support
 ## 1.1.0
 Released 20 June 2025 for SMAPI 4.0.0 or later
 * Add support for [Lumisteria Visit Mount Vapius](https://www.nexusmods.com/stardewvalley/mods/9600) mod
