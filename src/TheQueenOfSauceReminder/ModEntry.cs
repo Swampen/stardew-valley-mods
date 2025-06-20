@@ -46,6 +46,6 @@ public class ModEntry : Mod
             }
         }
 
-        Game1.drawObjectDialogue("Reminder: The Queen of Sauce is airing on TV today");
+        Game1.drawObjectDialogue(Helper.Translation.Get("queen-of-sauce.reminder"));
     }
 }
