@@ -35,21 +35,24 @@ public class ModEntry : Mod
     private void DayStarted(object? sender, DayStartedEventArgs e)
     {
         var today = SDate.Now().DayOfWeek;
-        var reminderDays = _isVisitMountVapiusLoaded
-            ? new List<DayOfWeek> { DayOfWeek.Tuesday, DayOfWeek.Saturday }
-            : new List<DayOfWeek> { DayOfWeek.Friday, DayOfWeek.Sunday };
 
+        if (today is DayOfWeek.Friday or DayOfWeek.Sunday)
+        {
+            Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived.forest")));
+        }
+
+        // Show VisitMountVapius reminder if mod is loaded and it's Tuesday or Saturday
+        // https://visitmountvapius.wiki.gg/wiki/The_Market
+        if (_isVisitMountVapiusLoaded && today is DayOfWeek.Tuesday or DayOfWeek.Saturday)
+        {
+            Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived.vapius")));
+        }
+
+        // Show RidgesideVillage reminder if mod is loaded and it's Wednesday
+        // https://github.com/Rafseazz/Ridgeside-Village-Mod/blob/main/Ridgeside%20SMAPI%20Component%202.0/RidgesideVillage/TravelingCart.cs#L28
         if (_isRidgesideVillageLoaded && today == DayOfWeek.Wednesday)
         {
             Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived.ridge")));
-            return;
         }
-
-        if (!reminderDays.Contains(today))
-        {
-            return;
-        }
-
-        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived")));
     }
 }
