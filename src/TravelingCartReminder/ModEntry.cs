@@ -8,6 +8,7 @@ namespace TravelingCartReminder;
 public class ModEntry : Mod
 {
     private bool _isVisitMountVapiusLoaded;
+    private bool _isRidgesideVillageLoaded;
 
     /// <summary>The mod entry point, called after the mod is first loaded.</summary>
     /// <param name="helper">Provides simplified APIs for writing mods.</param>
@@ -25,6 +26,7 @@ public class ModEntry : Mod
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs args)
     {
         _isVisitMountVapiusLoaded = Helper.ModRegistry.IsLoaded("lumisteria.visitmountvapius.code");
+        _isRidgesideVillageLoaded = Helper.ModRegistry.IsLoaded("Rafseazz.RidgesideVillage");
     }
 
     /// <summary>Raised after the days starts.</summary>
@@ -33,9 +35,19 @@ public class ModEntry : Mod
     private void DayStarted(object? sender, DayStartedEventArgs e)
     {
         var today = SDate.Now().DayOfWeek;
-        var reminderDays = _isVisitMountVapiusLoaded
-            ? new[] { DayOfWeek.Tuesday, DayOfWeek.Saturday }
-            : new[] { DayOfWeek.Friday, DayOfWeek.Sunday };
+        DayOfWeek[] reminderDays;
+        if (_isRidgesideVillageLoaded)
+        {
+            reminderDays = new[] { DayOfWeek.Wednesday };
+        }
+        else if (_isVisitMountVapiusLoaded)
+        {
+            reminderDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Saturday };
+        }
+        else
+        {
+            reminderDays = new[] { DayOfWeek.Friday, DayOfWeek.Sunday };
+        }
 
         if (!reminderDays.Contains(today))
         {

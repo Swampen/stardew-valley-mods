@@ -1,4 +1,7 @@
 # Release notes
+## 1.1.2
+Released 22 June 2025 for SMAPI 4.0.0 or later
+* Add support for [Ridgeside Village](https://www.nexusmods.com/stardewvalley/mods/7286) mod
 ## 1.1.1
 Released 20 June 2025 for SMAPI 4.0.0 or later
 * Add i18n support
