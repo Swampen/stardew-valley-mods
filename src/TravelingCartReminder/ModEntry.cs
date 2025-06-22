@@ -38,9 +38,11 @@ public class ModEntry : Mod
         var reminderDays = _isVisitMountVapiusLoaded
             ? new List<DayOfWeek> { DayOfWeek.Tuesday, DayOfWeek.Saturday }
             : new List<DayOfWeek> { DayOfWeek.Friday, DayOfWeek.Sunday };
-        if (_isRidgesideVillageLoaded)
+
+        if (_isRidgesideVillageLoaded && today == DayOfWeek.Wednesday)
         {
-            reminderDays.Add(DayOfWeek.Wednesday);
+            Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived.ridge")));
+            return;
         }
 
         if (!reminderDays.Contains(today))
@@ -48,7 +50,6 @@ public class ModEntry : Mod
             return;
         }
 
-        var messageKey = _isRidgesideVillageLoaded ? "traveling-cart.arrived.ridge" : "traveling-cart.arrived";
-        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get(messageKey)));
+        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived")));
     }
 }
