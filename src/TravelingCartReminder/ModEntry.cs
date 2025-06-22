@@ -35,18 +35,12 @@ public class ModEntry : Mod
     private void DayStarted(object? sender, DayStartedEventArgs e)
     {
         var today = SDate.Now().DayOfWeek;
-        DayOfWeek[] reminderDays;
+        var reminderDays = _isVisitMountVapiusLoaded
+            ? new List<DayOfWeek> { DayOfWeek.Tuesday, DayOfWeek.Saturday }
+            : new List<DayOfWeek> { DayOfWeek.Friday, DayOfWeek.Sunday };
         if (_isRidgesideVillageLoaded)
         {
-            reminderDays = new[] { DayOfWeek.Wednesday };
-        }
-        else if (_isVisitMountVapiusLoaded)
-        {
-            reminderDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Saturday };
-        }
-        else
-        {
-            reminderDays = new[] { DayOfWeek.Friday, DayOfWeek.Sunday };
+            reminderDays.Add(DayOfWeek.Wednesday);
         }
 
         if (!reminderDays.Contains(today))
@@ -54,6 +48,7 @@ public class ModEntry : Mod
             return;
         }
 
-        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get("traveling-cart.arrived")));
+        var messageKey = _isRidgesideVillageLoaded ? "traveling-cart.arrived.ridge" : "traveling-cart.arrived";
+        Game1.morningQueue.Enqueue(() => Game1.showGlobalMessage(Helper.Translation.Get(messageKey)));
     }
 }
