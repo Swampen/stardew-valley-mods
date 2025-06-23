@@ -1,4 +1,7 @@
 # Release notes
+## 1.1.3
+Released 23 June 2025 for SMAPI 4.0.0 or later
+* Update Chinese translation
 ## 1.1.2
 Released 22 June 2025 for SMAPI 4.0.0 or later
 * Add support for [Ridgeside Village](https://www.nexusmods.com/stardewvalley/mods/7286) mod
